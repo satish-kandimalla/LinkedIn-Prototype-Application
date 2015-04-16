@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>LinkedIn</title>
+	 <meta charset="utf-8"/>
+	 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"/>
+	 <link rel='stylesheet' href='/stylesheets/style.css' />
+	 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	 <!-- latest jQuery, Boostrap JS and hover dropdown plugin -->
+	 <script src="//code.jquery.com/jquery-latest.min.js"></script>
+	 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script> 
+</head>
+
+<body ng-app="app" ng-controller="addConnectionController">
+	<div class="container-fluid navbar-fixed-top">
+	   <!-- Top bar with grey background -->
+	   <div class="topbar">
+	  	<div class="container">
+		  	<form class="form-horizontal">
+		    	<div class="input-append">
+		    		<img src="images/linkedin.png" alt="LinkedIn" height="35" width="35"/>
+		    		<searchbar>
+			    		<input class="resizedTextBox" type="text" id="search" ng-model="searchValue" placeholder = "Search"/>
+				     	<button type="button" ng-click = "search()" class="btn btn-info">
+					  		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>	
+						</button>
+		    		</searchbar>
+		    		<ul class="cssMenu pull-right">
+				        <li>
+				            <a href="#Message"><img src="images/email.png" alt="LinkedInEmail" height="25" width="25"/></a>
+				            <ul>
+				                <li><a href="#">item1</a></li>
+				                <li><a href="#">item2</a></li>
+				                <li><a href="#">item3</a></li>
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><img src="images/notification.png" alt="LinkedInNotification" height="25" width="25"/></a>
+				            <ul>
+				                <li><a href="#">item1</a></li>
+				                <li><a href="#">item2</a></li>
+				                <li><a href="#">item3</a></li>
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#addConnection"><img src="images/user.png" alt="LinkedInUser" height="25" width="25"/></a>           
+				            <ul>
+				                <li><a href="#">item1</a></li>
+				                <li><a href="#">item2</a></li>
+				                <li><a href="#">item3</a></li>
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><img src="images/user.png" alt="LinkedInUser" height="25" width="25"/></a>           
+				            <ul>
+				                <li><a href="#">Logout</a></li>
+				            </ul>
+				        </li>
+				    </ul>
+				</div>
+			</form>
+		</div>
+	  </div> <!-- Top bar end -->
+	 
+	  <!-- Menu bar with black background -->
+	  <div class="menubar">
+	  	<div class="container">
+		  	<div class="btn-toolbar">
+		        <div class="btn-group">
+		          <button class="btn btn-link dropdown-toggle">Home</button>
+		        </div>
+		        <div class="btn-group">
+		          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Profile<span class="caret"></span></button>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Edit Profile</a></li>
+		            <li><a href="#">Who's viewed your profile</a></li>
+		            <li><a href="#">Your Updates</a></li>
+		          </ul>
+		        </div>
+		        <div class="btn-group">
+		          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Connections<span class="caret"></span></button>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Keep in touch</a></li>
+		            <li><a href="addConnections" ng-model = "clicked">Add connections</a></li>
+		          </ul>
+		        </div>
+		        <div class="btn-group">
+		          <button class="btn btn-link">Education</button>
+		        </div>
+		    </div>
+		 </div>
+	  </div> <!-- Menu bar end -->
+	 </div>
+	 
+	<!-- Display add connections page -->
+	<div class = "profile-page" style = "margin-top:50px;height: 250px">
+	<br/>
+		<h2 for="email">Email:</h2>
+		<input type="email" class="form-control" id="email" placeholder="Enter email to send request" ng-model = "sendRequestId"></br>
+		<button type="submit" ng-click = "sendRequest()" class="btn btn-primary">Send Request</button>   
+	</div>
+
+</body>
+<script type="text/javascript">
+			var app = angular.module('app', []);
+		    app.controller("addConnectionController", function($scope,$http)
+	     	{
+	     	    console.log("send request");
+	     		$scope.sendRequest = function()
+	     		{
+	     			 $http({
+		            	method: 'POST',
+		            	url: '/sendinvitation',
+		            	data: { "receiver":$scope.sendRequestId}
+		            }).success(function(response){
+		            	  
+		            }).error(function(error){
+		          			  alert("error");
+		        			});
+	     		
+	     		};
+	     	});
+</script>
+</html>

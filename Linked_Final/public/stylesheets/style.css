@@ -1,0 +1,611 @@
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+	
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+
+    header.carousel .carousel {
+        height: 70%;
+    }
+}
+.forgot-pwd{
+	display:inline-block;		
+	zoom:1;
+	padding-left:5px;	
+	position:relative;
+	top:-1px;
+	font-size:10.5px;
+	font-weight:bold;
+}
+
+.navbar ,.navbar-inverse, .navbar-fixed-top{
+position:absolute;
+}
+
+
+.navbar-inverse .navbar-nav li  {
+padding-left:10px;
+font-size:12px;
+font-family:Arial,sans-serif;
+font-weight:bold;
+color:#000;
+}
+
+#signup_pwd{
+height:25px;
+width:180px;
+margin-top:-6px;
+border-radius:0px;
+padding-left:5px;
+font-weight:normal;
+}
+
+#signup_uname{
+height:25px;
+margin-top:-6px;
+width:180px;
+border-radius:0px;
+padding-left:5px;
+font-weight:normal;
+}
+
+#signin{
+margin-top:18px;
+line-height:1.6;
+font-size:12px;
+width:60px;
+background-color:#cecece;
+background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f2f2), color-stop(5%, #f2f2f2), color-stop(5%, #e4e4e4), color-stop(100%, #cecece));
+background:-moz-linear-gradient(top, #f2f2f2 0, #f2f2f2 1px, #e4e4e4 1px, #cecece 100%);
+background:-o-linear-gradient(top, #f2f2f2 0, #f2f2f2 1px, #e4e4e4 1px, #cecece 100%);
+
+}
+#signin:hover{
+background:-webkit-gradient(linear, left top, left bottom, color-stop(0,#C2C2C2), color-stop(5%, #C2C2C2), color-stop(5%, #C2C2C2), color-stop(100%, #C2C2C2));
+background-color:#A9A9A9;
+}
+
+#page-header{
+line-height:40px;
+display:block;
+font-weight:bold;
+font-size:34px;
+color:#000;
+border-bottom:none;
+font-family:Arial,sans-serif;
+text-align:center;
+margin-top: 60px;
+}
+
+
+.header{
+font-size: 26px;
+font-weight: bold;
+line-height: 30px;
+color: #000;
+margin-bottom: 5px;
+position:relative;
+
+}
+
+
+.form-grid ul{
+list-style:none;
+padding:0px;
+}
+.form-grid p{
+font-size:16px;
+}
+.form-grid fieldset{
+padding-top:18px;
+}
+
+.first-col{
+padding-top:10px;
+width:500px;
+}
+.second-col{
+overflow:hidden;
+position:relative;
+top:-50px;
+padding-left:90px;
+font-family:Arial,sans-serif;
+color:#000;
+}
+.img-grid{
+margin-top:40px;
+}
+.img-grid img{
+float:left;
+margin-right:1px;
+margin-bottom:1px;
+width:150px;
+height:150px;
+}
+
+#row_two{
+  padding-right: 15px;
+  padding-left: 15px; 
+}
+div.alert, div.alert.error {
+background-color: #c9342f;
+background-repeat: no-repeat;
+background: -webkit-linear-gradient(top, #dd5959 0%,#c15252 100%);
+background: -moz-linear-gradient(top, #dd5959 0%,#c15252 100%);
+background: -o-linear-gradient(top, #dd5959 0%,#c15252 100%);
+background: linear-gradient(top, #dd5959 0%,#c15252 100%);
+-webkit-box-shadow: 0 0 0 1px #c15252,0 1px 2px rgba(0,0,0,0.45);
+-moz-box-shadow: 0 0 0 1px #c15252,0 1px 2px rgba(0,0,0,0.45);
+box-shadow: 0 0 0 1px #c15252,0 1px 2px rgba(0,0,0,0.45);
+overflow: hidden;
+display: block;
+color: #fff;
+font-size: 15px;
+line-height: 20px;
+position: relative;
+padding: 10px 20px 10px 50px;
+}
+div.alert {
+margin-bottom: 15px;
+}
+
+div.alert:before, div.alert.error:before {
+position: absolute;
+top: 7px;
+left: 12px;
+line-height: 1;
+}
+div.alert:before, div.alert.error:before {
+font-family: "LinkedIn-Glyphs-2.0.2","LinkedIn-Glyphs";
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+speak: none;
+font-size: 26px;
+color: inherit;
+content: "\e001";
+}
+
+.form-grid input[type="text"]{
+background:#fdfdfd;
+padding-bottom: 5px;
+border-radius:0px;
+}
+.form-grid input[type="password"]{
+background:#fdfdfd;
+padding-bottom: 5px;
+border-radius:0px;
+}
+.form-grid input[type="email"]{
+background:#fdfdfd;
+padding-bottom: 5px;
+border-radius:0px;
+}
+#firstname{
+float:left;
+width:160px;
+font-weight:bold;
+font-size:16px;
+}
+#lastname{
+float: left;
+padding-left: 2px;
+color:#5e5e5e;
+margin-left: 8px;
+width:180px;
+font-size:16px;
+font-weight:bold;
+}
+#email-address{
+padding-top: 60px;
+width:350px;
+color:#5e5e5e;
+font-size:16px;
+font-weight:bold;
+border-radius:0px;
+background:#fdfdfd;
+}
+#password{
+padding-top: 25px;
+color:#5e5e5e;
+width:350px;
+font-size:16px;
+font-weight:bold;
+border-radius:0px;
+background:#fdfdfd;
+}
+.form-bottom-row p{
+font-size: 11px;
+}
+.policy{
+width: 358px;
+padding-left: 2px;
+margin-top: 30px;
+overflow: hidden;
+line-height: 14px;
+color: #999;
+}
+
+#btn-join{
+width: 358px;
+margin-top: 10px;
+font-weight: bold;
+border-width: 1px;
+border-style: solid;
+text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+border-radius: 3px;
+padding: 0 15px;
+height: 34px;
+line-height: 32px;
+box-sizing: border-box;
+font-size: 16px;
+color: #333;
+background: #f6e312;
+border-color: #e9ac1a;
+background-color: #f6e312;
+background-image: -webkit-linear-gradient(top, #f6e312 0%,#f9c80d 100%);
+color: #333 !important;
+font-weight: bold;
+}
+#btn-join:hover{
+background-color: #eddb11;
+filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDDB11', endColorstr='#FFF2B21B');
+background-image: -webkit-linear-gradient(top, #eddb11 0%,#efcf14 35%,#f1bf18 65%,#f2b21b 100%);
+}
+.signup-footer{
+background-color:#F4F4F4;
+box-shadow: 0 -1px 4px #ccc;
+padding-bottom: 100px;
+background: #F4F4F4;
+border-top: 1px solid #CDCDCD;
+}
+.search-browse{
+padding-top: 20px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+margin: auto;
+width: 1000px;
+text-align :center
+
+}
+
+
+.footer-image{
+background:url('../publicimages/footer-logo.png');
+float: left;
+height: 16px;
+width: 62px;
+text-indent: -119988px;
+overflow: hidden;
+text-align: left;
+margin-left: 15px;
+margin-right: 3px;
+padding-left: 0px;
+padding-right: 0px;
+margin-top: -2px;
+
+}
+
+.em-class{
+margin-top: -5px;
+float:right;
+margin-right:15px;
+}
+
+footer{
+font-size: 12px;
+line-height: 14px;
+color: #666;
+font-weight: normal;
+padding-top: 10px;
+padding-bottom: 10px;
+margin-left: auto;
+margin-right: auto;
+width: 1000px;
+border-top: 1px solid #ccc;
+}
+
+
+
+/*#search-firstname{
+						
+position: relative;
+top: -35px;
+left: 90px;
+
+
+}
+#search-lastname{
+position: relative;
+top: -69px;
+left: 300px;
+
+}*/
+.label-header{
+float:left;
+margin-left:200px;
+}
+.label-header p{
+font-size:13px;
+font-weight:bold;
+color:#000;
+vertical-align:middle;
+padding-top:6px;
+}
+.fields{
+margin-right:100px;
+}
+.fields li{
+display: inline-block;
+padding-left:15px;
+    width: auto;
+    vertical-align: middle;
+}
+#search input[type="text"] {
+background-color: #fff;
+border-color: #ccc;
+border-radius:0px;
+width: 230px;
+height:30px;
+}
+
+#btn-search{
+height:30px;
+background-color:#cecece;
+background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f2f2), color-stop(5%, #f2f2f2), color-stop(5%, #e4e4e4), color-stop(100%, #cecece));
+background:-moz-linear-gradient(top, #f2f2f2 0, #f2f2f2 1px, #e4e4e4 1px, #cecece 100%);
+background:-o-linear-gradient(top, #f2f2f2 0, #f2f2f2 1px, #e4e4e4 1px, #cecece 100%);
+}
+
+#btn-search:hover{
+background:-webkit-gradient(linear, left top, left bottom, color-stop(0,#C2C2C2), color-stop(5%, #C2C2C2), color-stop(5%, #C2C2C2), color-stop(100%, #C2C2C2));
+background-color:#A9A9A9;
+}
+
+.nav-legal{
+
+list-style:none;
+padding:0px;
+margin-left:15px;
+}
+.nav-legal li{
+border-right: 1px solid #ccc;
+margin-right: 8px;
+padding-right: 8px;
+font-size: 12px;
+line-height: 14px;
+color: #333;
+font-weight: normal;
+margin-top: 5px;
+margin-bottom: 5px;
+float: left;
+}
+
+/*Override the default btn class to adjust the left margin*/
+.btn{
+	margin-left:5px;
+	}
+
+/*topbar displays the search, notification, mail and settings buttons*/
+.topbar{
+	padding:10px;
+	margin-bottom:0px;
+	color:inherit;
+	background-color:grey}
+.topbar p{
+	margin-bottom:15px;
+	font-size:21px;
+	font-weight:200}
+.topbar .container-fluid{
+	max-width:100%}
+.topbar{
+	padding-top:3px;
+	padding-bottom:1px}
+.container-fluid .topbar{
+	padding-right:100px;
+	padding-left:100px}
+
+/*This menu bar displays thw Home Profile Connections and Education options*/
+.menubar{
+	padding:10px;
+	margin-bottom:0px;
+	color:inherit;
+	background-color:black}
+.menubar p{
+	margin-bottom:0px;
+	font-size:12px;
+	font-weight:300;
+	color:white}
+.menubar .container-fluid{
+	max-width:100%}
+.menubar{
+	padding-top:2px;
+	padding-bottom:2px}
+.container-fluid .menubar{
+	padding-right:100px;
+	padding-left:100px}
+
+searchbar{
+	padding:50px;
+	padding-right:0px;
+	color:inherit}
+.resizedTextBox{
+	width:300px}
+
+/*aligns the colums text to center*/
+.col-xs-1 p{text-align:center}
+
+/*overriding the btn link default behavior*/
+.btn-link {color:white}
+
+/*overriding the dropdown menu*/
+.dropdown-menu{
+		background-color:black;}
+.dropdown-menu>li>a{
+		color:white;}
+.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus{
+		color:#176496;
+		background-color:black}
+		
+/*overriding icons button size*/
+.btn{line-height:0.4}
+
+
+/*Menu list*/
+ul.cssMenu, ul.cssMenu ul{
+	list-style:none;
+	margin:0; padding:0;
+	position: relative;
+}
+ul.cssMenu li{ 
+	position: relative; 
+	float: left; 
+	background: none}
+ul.cssMenu li:hover{ 
+	background: #AAAAAA}
+ul.cssMenu li a{
+	display: block; 
+	padding: 10px;
+	color:#000000;
+	font-family: Arial, Times New Roman, Tahoma;
+	font-size: 12px}
+ul.cssMenu ul{ 
+	display:none;
+	position: absolute;
+	width: 150px; 
+	border:1px solid #AAAAAA;
+	padding:1px;
+	background:#FFFFFF}
+
+ul.cssMenu ul li{ 
+	background: #F5F5F5; 
+	color: #000; 
+	border-bottom: 1px solid #DDDDDD; 
+	float: none}
+
+ul.cssMenu ul li a{ 
+	width: 100%; 
+	display: block; 
+	color:#000000}
+
+ul.cssMenu li:hover > ul{ 
+	display:block;
+}
+
+.signin-display-text {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 1200px) {
+  .signin-display-text {
+    float: left;
+    width: 100%
+  }
+}
+
+.fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100px;
+}
+  
+.profile-page{
+	margin-top:50px;
+	padding-right: 60px;
+    padding-left: 15px;
+    border:1px;
+    width: 60%;
+  margin-left:120px;
+  background-color:#e4e4e4;
+}  
+edit-button {
+  margin-left: 10px;
+  padding: 0 1em;
+}  

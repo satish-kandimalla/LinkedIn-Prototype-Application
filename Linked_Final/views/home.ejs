@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>LinkedIn</title>
+	 <meta charset="utf-8"/>
+	 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"/>
+	 <link rel='stylesheet' href='/stylesheets/style.css' />
+	 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	 <!-- latest jQuery, Boostrap JS and hover dropdown plugin -->
+	 <script src="//code.jquery.com/jquery-latest.min.js"></script>
+	 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script> 
+</head>
+
+<body ng-app="app" ng-controller="homeController">
+	<div class="container-fluid navbar-fixed-top">
+	<!-- Top bar with grey background -->
+	   <div class="topbar">
+	  	<div class="container">
+		  	<form class="form-horizontal">
+		    	<div class="input-append">
+		    		<img src="images/linkedin.png" alt="LinkedIn" height="35" width="35"/>
+		    		<searchbar>
+			    		<input class="resizedTextBox" type="text" id="search" ng-model="searchValue" placeholder = "Search"/>
+				     	<button type="button" ng-click = "search()" class="btn btn-info">
+					  		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>	
+						</button>
+		    		</searchbar>
+		    		<ul class="cssMenu pull-right">
+				        <li>
+				            <a href="#Message"><img src="images/email.png" alt="LinkedInEmail" height="25" width="25"/></a>
+				            <ul>
+				                <li><a href="#">item1</a></li>
+				                <li><a href="#">item2</a></li>
+				                <li><a href="#">item3</a></li>
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><img src="images/notification.png" alt="LinkedInNotification" height="25" width="25"/></a>
+				            <ul>
+				                <li><a href="#">item1</a></li>
+				                <li><a href="#">item2</a></li>
+				                <li><a href="#">item3</a></li>
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#addConnection"><img src="images/user.png" alt="LinkedInUser" height="25" width="25"/></a>           
+				            <ul>
+				            
+				            	<%
+	 								if(session.connections!==undefined)
+	 								{
+	 									var connections = session.connections;
+	 									for(var i=0; i<connections.length;i++)
+	 									{
+	 							%>
+	 						
+	 						
+								<li>Connection request from <%=connections[i].first_name%> <%=connections[i].last_name%>
+								<button data-ng-click="viewProfile(<%=connections[i].from_user_id%>)" class="btn btn-primary" id="<%=connections[i].from_user_id%>">View Profile</button></li>
+									
+	 						<%
+	 								}
+	 								if(connections.length ==0)
+	 								{
+	 						%>
+	 							<li> No connections requests pending</li>
+	 						<%	
+	 								}
+	 							} else {
+	 							
+	 						%>
+	 							<li> No connections requests pending</li>
+	 							
+	 						<%
+	 							
+	 							}
+	 							
+	 						%>
+				            
+				            
+				            
+				            
+				                
+				            </ul>
+				        </li>
+				        <li>
+				            <a href="#"><img src="images/user.png" alt="LinkedInUser" height="25" width="25"/></a>           
+				            <ul>
+				                <li><a href="#" ng-click="signOut()">Logout</a></li>
+				            </ul>
+				        </li>
+				        
+				    </ul>
+				</div>
+			</form>
+		</div>
+	  </div>
+	 
+	  <div class="menubar">
+	  	<div class="container">
+		  	<div class="btn-toolbar">
+		        <div class="btn-group">
+		          <button class="btn btn-link dropdown-toggle">Home</button>
+		        </div>
+		        <div class="btn-group">
+		          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Profile<span class="caret"></span></button>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Edit Profile</a></li>
+		            <li><a href="#">Who's viewed your profile</a></li>
+		            <li><a href="#">Your Updates</a></li>
+		          </ul>
+		        </div>
+		        <div class="btn-group">
+		          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Connections<span class="caret"></span></button>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Keep in touch</a></li>
+		            <li><a href="addConnections" ng-model = "clicked">Add connections</a></li>
+		          </ul>
+		        </div>
+		        <div class="btn-group">
+		          <button class="btn btn-link">Education</button>
+		        </div>	        
+		    </div>
+		 </div>
+	  </div>
+	 </div>
+	 <div>
+  
+</div>
+</div>
+<div class = "profile-page" style = "height: 230px">
+	<img src="images/four.png" alt="LinkedInUser" class="col-md-3" style = "margin-top:20px" height="180" width="180"/>
+	
+	<%
+	if(session.user_id!=null)
+	{
+	var lastLogin  = session.lastLogin;
+	var first_name = session.first_name;
+	var last_name  = session.last_name;
+	%>
+    <h2 class="col-md-7"><%=first_name%> <%=last_name%></h2>
+    <h4 class="col-lg-7">Last Login: <%=lastLogin%></h4>
+    <%
+    }
+    %>
+</div>
+
+<div class = "profile-page" style = "margin-top:20px;height: 230px">
+      <div>
+	      <h3>Summary</h3>
+      </div>
+      <div>
+    	    <%
+			if(session.user_id!=null)
+			{
+			var sum=session.summary;
+			%>
+			<textarea class="form-control" rows="5" id="summaryArea" ng-init="summaryData='<%= sum[0].summary%>'" ng-model="summaryData" ng-disabled="editableSummary">
+			</textarea>
+			<%
+			}
+			%>
+      </div>
+      <br/>  
+      <div>
+	      <button name=""  ng-click="editableSummary = !editableSummary" class="btn btn-primary">Edit</button>
+	      <button name=""  ng-click="saveSummary()" class="btn btn-primary">Save</button> 
+	      <button name=""  ng-click="cancel()" class="btn btn-primary">Cancel</button>  
+	   </div>   
+	   <br/>
+      </div>
+</div>
+<div class = "profile-page" style = "margin-top:20px">
+	<div>
+		<h3>Experience</h3>
+	</div>
+	<%
+	if(session.user_id!=null)
+	{
+	var exp=session.experience;
+	%>
+	<div class="row">
+		<label class="col-md-3">Company Name*</label>
+		<input class="col-md-5" type="text" ng-init="companyName='<%=exp[0].company_name%>'" ng-model="companyName" ng-disabled="editableExperience" required>
+    </div><br/>
+	<div class="row">
+		<label class="col-md-3">Title*</label>
+		<input class="col-md-5" type="text" ng-init="title='<%=exp[0].title%>'" ng-model="title" ng-disabled="editableExperience">
+	</div><br/>	
+		<div class="row">
+		<label class="col-md-3">Location</label>
+		<input class="col-md-5" type="text" ng-init="location='<%=exp[0].location%>'" ng-model="location" ng-disabled="editableExperience">
+	</div><br/>
+		<div class="row">
+		<label class="col-md-3">Time Period*</label>
+		<input class="col-md-2" type="date" ng-init="expStartDate='<%=exp[0].start_date%>'" ng-model="expStartDate" ng-disabled="editableExperience">
+		<p2 class="col-xs-1">-</p2>
+		<input class="col-md-2" type="date" ng-init="expEndDate='<%=exp[0].end_date%>'" ng-model="expEndDate" ng-disabled="editableExperience" >
+	</div><br/>
+		<div class="row">
+		<label class="col-md-3">Description</label>
+		<textarea class="col-md-5" rows="5" id="jobDescription" ng-init="jobDescription='<%=exp[0].description%>'" ng-disabled="editableExperience" ng-model = "jobDescription"></textarea>
+	</div><br/>
+	<%
+	}
+	%>
+	<div>
+	      <button name=""  ng-click="editableExperience = !editableExperience" class="btn btn-primary">Edit</button>
+	      <button name=""  data-ng-click="saveExperience($event)" class="btn btn-primary" id="<%=exp[0].idExperience%>">Save</button> 
+	      <button name=""  ng-click="cancelExperience()" class="btn btn-primary">Add</button>  
+	  </div> 
+	  <br/>
+</div>
+<div class = "profile-page" style = "margin-top:20px">
+    <form>
+	<div>
+		<h3>Education</h3>
+	</div>
+	<%
+	if(session.user_id!=null)
+	{
+	var edu=session.education;
+	%>
+	<div class="row">
+		<label class="col-md-2">School*</label>
+		<input class="col-md-5" type="text" ng-init="school='<%=edu[0].univ_name%>'" ng-model="school" ng-disabled="editableEducation" required>
+    </div><br/>
+    <div class="row">
+		<label class="col-md-2">Degree</label>
+		<input class="col-md-5" type="text" ng-init="degree='<%=edu[0].level%>'" ng-model="degree" ng-disabled="editableEducation">
+    </div><br/>
+	<div class="row">
+		<label class="col-md-2">Start Date</label>
+		<input class="col-md-2" type="date" ng-init="eduStartDate='<%=edu[0].start_date%>'" ng-model="eduStartDate" ng-disabled="editableEducation">
+		<label class="col-md-2">End Date</label>
+		<input class="col-md-2" type="date" ng-init="eduEndDate='<%=edu[0].end_date%>'" ng-model="eduEndDate" ng-disabled="editableEducation">
+	</div><br/>
+		<div class="row">
+		<label class="col-md-2">Field of Study</label>
+		<input class="col-md-5" type="text" ng-init="studyField='<%=edu[0].field%>'" ng-model="studyField" ng-disabled="editableEducation">
+	</div><br/>
+		<div class="row">
+		<label class="col-md-2">Grade</label>
+		<input class="col-md-5" type="text" ng-init="grade='<%=edu[0].grade%>'" ng-model="grade" ng-disabled="editableEducation">
+	</div><br/>
+		<div class="row">
+		<label class="col-md-2">Description</label>
+		<textarea class="col-md-5" rows="5" id="edesc" ng-init="educationDesc='<%=edu[0].description%>'" ng-disabled="editableEducation" ng-model="educationDesc"></textarea>
+	</div><br/>
+	<%
+	}
+	%>
+	<div>
+	      <button name=""  ng-click="editableEducation = !editableEducation" class="btn btn-primary">Edit</button>
+	      <button name=""  ng-click="saveEducation($event)" class="btn btn-primary" id="<%=edu[0].idEducation%>">Save</button> 
+	      <button name=""  ng-click="cancelEducation()" class="btn btn-primary">Cancel</button>  
+	  </div>
+	  <br/>
+	 </form>  
+</div>
+
+<div class = "profile-page" style = "margin-top:20px">
+    <form>
+		<div>
+			<h3>Skills</h3>
+		</div>
+		<%
+		if(session.user_id!=null)
+		{
+		  var skills = session.skills;
+		  var skillName = ["", "", "", "", ""];
+		  for(var i=0; i < skills.length; i++)
+		  {
+		  	skillName[i] = skills[i].skill_name;	
+		  }
+		}
+		%>
+		<div class="row">
+			<label class="col-md-2">Skill 1</label>
+			<input class="col-md-5" type="text" ng-init="skill1='<%=skillName[0]%>'" ng-model="skill1" ng-bind = "skill1" ng-blur="saveSkill1()" ng-disabled="editableSkills">
+    	</div><br/>
+    	<div class="row">
+			<label class="col-md-2">Skill 2</label>
+			<input class="col-md-5" type="text" ng-init="skill2='<%=skillName[1]%>'" ng-model="skill2" ng-disabled="editableSkills">
+    	</div><br/>
+		<div class="row">
+			<label class="col-md-2">Skill 3</label>
+			<input class="col-md-5" type="text" ng-init="skill3='<%=skillName[2]%>'" ng-model="skill3" ng-disabled="editableSkills">
+    	</div><br/>
+    	<div class="row">
+			<label class="col-md-2">Skill 4</label>
+			<input class="col-md-5" type="text" ng-init="skill4='<%=skillName[3]%>'" ng-model="skill4" ng-disabled="editableSkills">
+    	</div><br/>
+    	<div class="row">
+			<label class="col-md-2">Skill 5</label>
+			<input class="col-md-5" type="text" ng-init="skill5='<%=skillName[4]%>'" ng-model="skill5" ng-disabled="editableSkills">
+    	</div><br/>
+
+		<div>
+	      <button name=""  ng-click="editableSkills = !editableSkills" class="btn btn-primary">Edit</button>
+	      <button name=""  ng-click="saveSkills()" class="btn btn-primary" id="<%=skills%>">Save</button> 
+	      <button name=""  ng-click="cancelSkills()" class="btn btn-primary">Cancel</button>  
+	    </div>
+	</form>
+</div>
+
+</body>
+<script type="text/javascript">
+			var app = angular.module('app', []);
+		    app.controller("homeController", function($scope,$http)
+	     	{
+	     		$scope.editableEducation = true;
+	     		$scope.editableExperience = true;
+	     		$scope.editableSummary = true;
+	     		$scope.editableSkills = true;
+	     		
+	     		
+	     		$scope.saveSkills = function(){
+	     		console.log($scope.skill1);
+	     			$http({
+		            	method: 'POST',
+		            	url: '/updateskills',
+		            	data: { "skill":$scope.skill1}
+		            }).success(function(response){
+		            
+		            }).error(function(error){
+		          			  alert("error");
+		        	});
+	     		
+	     		};
+	     		
+	     		
+	     		
+	     		
+	     	    $scope.saveSummary = function()
+	      		{
+	      		   $scope.editableSummary = true;
+	      		   $http({
+		            	method: 'POST',
+		            	url: '/insertSummary',
+		            	data: { "summary":$scope.summaryData}
+		            }).success(function(response){
+		            }).error(function(error){
+		          			  alert("error");
+		        	});
+	           };
+	           
+	            $scope.viewProfile = function(event)
+	      		{
+	      		console.log(event);
+	      		   $http({
+		            	method: 'POST',
+		            	url: '/getProfile',
+		            	data: { "user_id":event}
+		            }).success(function(response){
+		            	if(response.guestProfile == "Success") {
+		            		window.location = '/displayProfile';
+		            	}
+		            }).error(function(error){
+		          			  alert("error");
+		        	});
+	           };
+	           
+	           $scope.saveExperience = function(event)
+	      		{
+	      		console.log(event.target.id);
+	      		   $scope.editableExperience = true;
+	           	    $http({
+		            	method: 'POST',
+		            	url: '/updateExperience',
+		            	data: { "companyName":$scope.companyName,
+		            	        "title":$scope.title,
+		            	        "location":$scope.location,
+		            	        "startdate":$scope.expStartDate,
+		            	        "enddate":$scope.expEndDate,
+		            	        "description":$scope.jobDescription,
+		            	        "id":event.target.id }
+		            }).success(function(response){
+		            }).error(function(error){
+		          			  alert("error");
+		        	});
+	           };
+	           $scope.saveEducation = function(event)
+	      		{
+	      		   console.log("saved");
+	      		   $scope.editableEducation = true;
+	           	    $http({
+		            	method: 'POST',
+		            	url: '/updateEducation',
+		            	data: { "level":$scope.degree,
+		            	         "univName":$scope.school,
+		            	         "studyfield":$scope.studyField,
+		            	         "grade":$scope.grade,
+		            	         "startdate":$scope.eduStartDate,
+		            	         "enddate":$scope.eduEndDate,
+		            	         "description":$scope.educationDesc,
+		            	         "id":event.target.id}
+		            }).success(function(response){
+		            }).error(function(error){
+		          			  alert("error");
+		        	});
+	           };
+	          
+
+	           $scope.signOut = function()
+	           {
+	           		$http({
+		            	method: 'POST',
+		            	url: '/signout'
+		            	}).success(function(response){
+			            	window.location='/';
+			            }).error(function(error){
+			          	    alert("error");
+		        	});
+	           };
+	           $scope.search = function()
+	           {
+	           		$http({
+		            	method: 'POST',
+		            	url: '/search',
+		            	data: {"enteredText": $scope.searchValue}
+		            	}).success(function(response){
+		            		//alert("Got serachcccccccccccccccccccccccc"+response);
+			            	window.location='/searchResults';
+			            }).error(function(error){
+			          	    alert("error");
+		        	});
+	           };
+	           		
+	        });
+</script>
+</html>
